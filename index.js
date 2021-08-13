@@ -1,53 +1,65 @@
-const billAmount = document.getElementById("bill-amount");
+const billAmount = document.querySelector("#bill-amount");
 const nextButton = document.querySelector("#next-button");
-const cashDiv = document.querySelector("#cash-div");
-const cashGiven = document.getElementById("cash-given");
 const checkButton = document.querySelector("#check-button");
+const cashGiven = document.querySelector("#cash-given");
+const notesRequired = document.querySelector("#notesRequired");
 const message = document.querySelector("#error-message");
+const displayTable = document.querySelector(".change-table");
 const typeNoOfNotes = document.querySelectorAll(".typeNo-Of-Notes");
-const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
+const cashDiv = document.querySelector("#cash-div");
 
 cashDiv.style.display = "none";
-message.style.display = "none";
+displayTable.style.display = "none";
 
-nextButton.addEventListener("click", function validateBillamt() {
+var numberOfNotes;
+
+const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
+
+
+
+nextButton.addEventListener("click", checkBillAmount);
+checkButton.addEventListener("click", changeCalculater);
+
+function checkBillAmount() {
+
     if (billAmount.value > 0) {
-        cashDiv.style.display = "block";
+        cashDiv.style.display = "flex";
     } else {
-        cashDiv.style.display = "none";
-        message.innerText = "Please enter amount greater than 0."
+        showMessage("Please enter bill amount greater than 0.");
     }
-})
-message.style.display = "none";
 
-checkButton.addEventListener("click", function validateCashAmt() {
+}
 
-    if (billAmount.value > cashGiven.value) {
-        message.style.display = "block";
-        message.innerText = "You are short on cash.";
+function changeCalculater() {
 
-    } else if (cashGiven.value > billAmount.value) {
+    if (Number(cashGiven.value) >= Number(billAmount.value)) {
+        displayTable.style.display = "block";
+        hideMessage();
         const amountToBeReturned = cashGiven.value - billAmount.value;
-        changeCalculater(amountToBeReturned);
+        returnChange(amountToBeReturned);
     } else {
-        message.style.display = "block";
-        message.innerText = "No returns as you paid the exact bill amount.";
+
+        showMessage("You are short on cash!");
     }
+}
 
-    // console.log(
-    //   billAmount.value,
-    //   " ",
-    //   cashGiven.value,
-    //   " ",
-    //   amountToBeReturned
-    // );
+function showMessage(msg) {
 
-});
+    message.style.display = "block";
+    message.innerHTML = msg;
+}
 
-function changeCalculater(amountToBeReturned) {
+function returnChange(amountToBeReturned) {
+
     for (let i = 0; i < availableNotes.length; i++) {
         const noOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]);
         amountToBeReturned %= availableNotes[i];
         typeNoOfNotes[i].innerText = noOfNotes;
     }
+
+}
+
+function hideMessage() {
+
+    message.style.display = "none";
 }
