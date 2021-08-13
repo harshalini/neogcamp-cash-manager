@@ -7,18 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
     <title>Cash register</title>
+    <style></style>
 </head>
 
 <body>
+
     <div class="container">
         <h1 class="heading">Cash Register Manager</h1>
         <p class="description">This is a cash register app which returns number of notes after you enter bill amount and the amount you paid.</p>
-        <label for="bill-amount">Bill amount</label>
+        <label class="label" for="bill-amount">Bill amount</label>
         <input id="bill-amount" type="number" />
-        <label for="cash-given">Cash you gave</label>
-        <input id="cash-given" type="number" />
-        <button id="check-button">Count</button>
+        <button id="next-button">Next</button>
+
+        <div id="cash-div">
+            <label class="label" for="cash-given">Cash you gave</label>
+            <input id="cash-given" type="number" />
+            <button id="check-button">Count</button>
+        </div>
+
         <p id="error-message"></p>
+
         <table class="change-table">
             <caption>Return change</caption>
             <tr>
@@ -33,13 +41,13 @@
             </tr>
             <tr>
                 <th>Types of notes</th>
-                <td>2000</td>
-                <td>500</td>
-                <td>100</td>
-                <td>20</td>
-                <td>10</td>
-                <td>5</td>
-                <td>1</td>
+                <td class="rs">2000</td>
+                <td class="rs">500</td>
+                <td class="rs">100</td>
+                <td class="rs">20</td>
+                <td class="rs">10</td>
+                <td class="rs">5</td>
+                <td class="rs">1</td>
             </tr>
         </table>
     </div>

@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+body {
+    font-family: 'Righteous', cursive;
+    background-image: url(images/imageedit_1_2720899276.png);
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70%;
+}
+
 .container {
     align-items: center;
     display: flex;
@@ -6,4 +16,75 @@
 
 h1 {
     text-align: center;
+}
+
+.description {
+    display: block;
+    background-color: darkblue;
+    border-color: floralwhite;
+    color: white;
+    padding: 1rem;
+}
+
+.label {
+    background-color: #261C2C;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 1rem;
+    ;
+}
+
+#bill-amount {
+    padding: 0.5rem;
+    width: 50vh;
+}
+
+#cash-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#cash-given {
+    padding: 0.5rem;
+    width: 50vh;
+}
+
+#next-button {
+    background-color: darkblue;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#check-button {
+    background-color: darkblue;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.change-table th {
+    background-color: darkblue;
+    color: white;
+}
+
+.typeNo-Of-Notes {
+    background-color: white;
+    padding: 1.5rem;
+    border: black;
+}
+
+.rs {
+    background-color: darkcyan;
+    color: white;
+    text-align: center;
+}
+
+img {
+    opacity: 0.5;
 }

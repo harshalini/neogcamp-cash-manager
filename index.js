@@ -1,37 +1,53 @@
 const billAmount = document.getElementById("bill-amount");
+const nextButton = document.querySelector("#next-button");
+const cashDiv = document.querySelector("#cash-div");
 const cashGiven = document.getElementById("cash-given");
 const checkButton = document.querySelector("#check-button");
 const message = document.querySelector("#error-message");
 const typeNoOfNotes = document.querySelectorAll(".typeNo-Of-Notes");
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 
-checkButton.addEventListener("click", function validateBillAndCashAmt() {
-  message.style.display = "none";
-  if (billAmount.value > 0) {
-  } else {
-    message.style.display = "block";
-    message.innerText = "Please enter amount greater than 0";
-  }
-  if (cashGiven.value > billAmount.value) {
-    message.style.display = "block";
-    message.innerText = "You are short on cash.";
-  }
+cashDiv.style.display = "none";
+message.style.display = "none";
 
-  const amountToBeReturned = cashGiven.value - billAmount.value;
-  // console.log(
-  //   billAmount.value,
-  //   " ",
-  //   cashGiven.value,
-  //   " ",
-  //   amountToBeReturned
-  // );
-  changeCalculater(amountToBeReturned);
+nextButton.addEventListener("click", function validateBillamt() {
+    if (billAmount.value > 0) {
+        cashDiv.style.display = "block";
+    } else {
+        cashDiv.style.display = "none";
+        message.innerText = "Please enter amount greater than 0."
+    }
+})
+message.style.display = "none";
+
+checkButton.addEventListener("click", function validateCashAmt() {
+
+    if (billAmount.value > cashGiven.value) {
+        message.style.display = "block";
+        message.innerText = "You are short on cash.";
+
+    } else if (cashGiven.value > billAmount.value) {
+        const amountToBeReturned = cashGiven.value - billAmount.value;
+        changeCalculater(amountToBeReturned);
+    } else {
+        message.style.display = "block";
+        message.innerText = "No returns as you paid the exact bill amount.";
+    }
+
+    // console.log(
+    //   billAmount.value,
+    //   " ",
+    //   cashGiven.value,
+    //   " ",
+    //   amountToBeReturned
+    // );
+
 });
 
 function changeCalculater(amountToBeReturned) {
-  for (let i = 0; i < availableNotes.length; i++) {
-    const noOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]);
-    amountToBeReturned %= availableNotes[i];
-    typeNoOfNotes[i].innerText = noOfNotes;
-  }
+    for (let i = 0; i < availableNotes.length; i++) {
+        const noOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]);
+        amountToBeReturned %= availableNotes[i];
+        typeNoOfNotes[i].innerText = noOfNotes;
+    }
 }
