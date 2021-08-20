@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 body {
     font-family: 'Righteous', cursive;
-    background-image: url(images/imageedit_1_2720899276.png);
+    background-image: url(./images/bill-counter.png);
     align-items: center;
     background-position: center;
     background-repeat: no-repeat;
@@ -107,4 +107,25 @@ h1 {
     color: white;
     text-align: center;
     border: solid 2px black;
+}
+
+@media screen and (max-width: 400px) {
+    #bill-amount,
+    #cash-div {
+        width: 50%;
+    }
+    #cash-given {
+        width: 100%;
+        margin-left: -5%;
+    }
+    .change-table {
+        display: flex;
+        flex-direction: column;
+    }
+    .typeNo-Of-Notes,
+    .change-table th {
+        padding: 0.2rem;
+        text-align: center;
+        margin: 0%;
+    }
 }

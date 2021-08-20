@@ -13,7 +13,7 @@ displayTable.style.display = "none";
 
 var numberOfNotes;
 
-const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
+const availableNotes = [2000, 500, 100, 50, 20, 10, 5, 1];
 
 
 
@@ -25,7 +25,7 @@ function checkBillAmount() {
     if (billAmount.value > 0) {
         cashDiv.style.display = "flex";
     } else {
-        showMessage("Please enter bill amount greater than 0.");
+        showMessage("Please enter a valid bill amount.");
     }
 
 }
@@ -37,9 +37,13 @@ function changeCalculater() {
         hideMessage();
         const amountToBeReturned = cashGiven.value - billAmount.value;
         returnChange(amountToBeReturned);
+        if (amountToBeReturned == 0) {
+            showMessage("No change as you paid the exact bill amount!");
+            displayTable.style.display = "none";
+        }
     } else {
-
-        showMessage("You are short on cash!");
+        displayTable.style.display = "none";
+        showMessage("You are short on cash! Do you want to wash plates?");
     }
 }
 
